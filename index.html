@@ -73,6 +73,11 @@
     .menu-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
     .menu-buttons { display: grid; gap: 9px; }
     .menu-buttons button { font-size: 11px; padding: 9px 10px; }
+    .maker-credit { color: #f6c2c2; font-size: 11px; letter-spacing: .08em; margin: 10px 0 0; }
+    #arcadeOver .victory-stats { margin: 20px auto; }
+    .arcade-mode #mobile [data-hold="left"], .arcade-mode #mobile [data-hold="right"], .arcade-mode #mobile [data-hold="ability"], .arcade-mode #mobile [data-press] { display: none; }
+    .arcade-mode #mobile .group.vertical { margin-left: auto; }
+    .arcade-mode #mobile [data-hold="jump"] { width: 82px; height: 68px; }
     #gameNav { position: absolute; top: 14%; right: 9px; display: flex; gap: 7px; z-index: 1; }
     #gameNav button { width: 44px; height: 44px; min-height: 44px; padding: 2px; font-size: 22px; background: #173c50de; color: #fff0c8; box-shadow: 2px 2px 0 #082037; border-color: #99c9bd; }
     .controls-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
@@ -96,7 +101,7 @@
       #menu h1 { font-size: 39px; }
       #menu .fish-icon { width: 80px; height: 60px; }
       .menu-buttons { grid-template-columns: 1fr 1fr; gap: 9px; }
-      #start, #continue, #controlsMenu { grid-column: 1 / -1; }
+      #start, #continue, #arcadeStart { grid-column: 1 / -1; }
       .menu-buttons button { min-height: 40px; }
       .controls-table { font-size: 11px; }
       .controls-table th, .controls-table td { padding: 5px 7px; }
@@ -117,11 +122,12 @@
     <div id="formWheel" aria-label="Choose a form"><div class="wheel"><b>CHOOSE A FORM</b><div class="wheel-grid"><button data-form="puff">→ PUFF<br>roll / smash</button><button data-form="kelp">← KELP<br>reach / pull</button><button data-form="glow">↑ GLOW<br>bubble shot</button><button data-form="fin">↓ FIN<br>double jump</button></div><small>Arrow keys or 1–4 • Z to close</small></div></div>
     <div id="dialog" hidden><div class="speaker" id="speaker"></div><p id="dialogText"></p><div class="hint">PRESS ENTER / TAP TO CONTINUE ▸</div></div>
     <nav id="gameNav" hidden aria-label="Game navigation"><button id="navPause" aria-label="Pause game">Ⅱ</button><button id="navHome" aria-label="Home screen">⌂</button></nav>
-    <section class="overlay" id="menu"><div class="card"><div class="menu-layout"><div><div class="eyebrow">a tiny ocean adventure</div><h1>WEOW<br>PURSUIT</h1><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg></div><div><p class="lead">Four letters. Four fishy powers.<br>One very important message.</p><div class="menu-buttons"><button id="continue" hidden>Continue</button><button id="start">New adventure</button><button id="controlsMenu" class="secondary">Controls guide</button><button id="soundMenu" class="secondary">Sound: on</button><button id="fullscreenMenu" class="secondary">Fullscreen</button></div></div></div><div class="form-list"><span><strong>PUFF</strong>roll + smash</span><span><strong>KELP</strong>reach + pull</span><span><strong>GLOW</strong>bubble shot</span><span><strong>FIN</strong>double jump</span></div><p class="help">PC: SPACE to jump · X to act<br>Mobile: turn sideways and use the touch buttons.</p></div></section>
+    <section class="overlay" id="menu"><div class="card"><div class="menu-layout"><div><div class="eyebrow">a tiny ocean adventure</div><h1>WEOW<br>PURSUIT</h1><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg></div><div><p class="lead">Four letters. Four fishy powers.<br>One very big WEOW.</p><div class="menu-buttons"><button id="continue" hidden>Continue</button><button id="start">New adventure</button><button id="arcadeStart" class="secondary">Arcade mode</button><button id="controlsMenu" class="secondary">Controls guide</button><button id="soundMenu" class="secondary">Sound: on</button><button id="fullscreenMenu" class="secondary">Fullscreen</button></div></div></div><div class="form-list"><span><strong>PUFF</strong>roll + smash</span><span><strong>KELP</strong>reach + pull</span><span><strong>GLOW</strong>bubble shot</span><span><strong>FIN</strong>double jump</span></div><p class="help">PC: SPACE to jump · X to act<br>Mobile: turn sideways and use the touch buttons.</p><p class="maker-credit">Made by Ronny, for a blobfish</p></div></section>
     <section class="overlay" id="pause" hidden><div class="card"><div class="eyebrow">the sea can wait</div><h2>PAUSED</h2><div class="buttons"><button id="resume">Keep swimming</button><button id="restart" class="secondary">Restart stage</button><button id="controlsPause" class="secondary">Controls guide</button><button id="pauseHome" class="secondary">Home</button><button id="soundPause" class="secondary">Sound: on</button><button id="fullscreenPause" class="secondary">Fullscreen</button></div></div></section>
-    <section class="overlay" id="guide" hidden><div class="card"><div class="eyebrow">a little field guide</div><h2>HOW TO PLAY</h2><table class="controls-table"><thead><tr><th>Action</th><th>Keyboard</th><th>Touch</th></tr></thead><tbody><tr><td>Move</td><td>← → or A / D</td><td>◀ / ▶</td></tr><tr><td>Jump</td><td>SPACE</td><td>JUMP</td></tr><tr><td>Use ability</td><td>Hold X</td><td>Hold ACT</td></tr><tr><td>Choose form</td><td>Z or 1–4</td><td>FORM</td></tr><tr><td>Talk</td><td>C / ENTER</td><td>TALK</td></tr><tr><td>Pause / Home</td><td>ESC / ⌂ button</td><td>Ⅱ / ⌂</td></tr><tr><td>Sound</td><td>M</td><td>♪ or menu</td></tr></tbody></table><p class="guide-note">Hold jump for height. FIN can jump again in midair. Land on crabs or use powers to befriend enemies. Near a shell or vine gate, ACT chooses the right form.</p><p class="guide-note">Stars are optional. A shield blocks one hit. A magnet pulls stars closer. Star power gives free abilities, but you still need to dodge. Bosses glow before attacking.</p><div class="buttons"><button id="guideBack">Back</button></div></div></section>
+    <section class="overlay" id="guide" hidden><div class="card"><div class="eyebrow">a little field guide</div><h2>HOW TO PLAY</h2><table class="controls-table"><thead><tr><th>Action</th><th>Keyboard</th><th>Touch</th></tr></thead><tbody><tr><td>Move</td><td>← → or A / D</td><td>◀ / ▶</td></tr><tr><td>Jump</td><td>SPACE</td><td>JUMP</td></tr><tr><td>Use ability</td><td>Hold X</td><td>Hold ACT</td></tr><tr><td>Choose form</td><td>Z or 1–4</td><td>FORM</td></tr><tr><td>Talk</td><td>C / ENTER</td><td>TALK</td></tr><tr><td>Pause / Home</td><td>ESC / ⌂ button</td><td>Ⅱ / ⌂</td></tr><tr><td>Sound</td><td>M</td><td>♪ or menu</td></tr></tbody></table><p class="guide-note">Adventure: hold jump for height. FIN jumps again in midair. Land on crabs or use powers to befriend enemies. Near a shell or vine gate, ACT chooses the right form.</p><p class="guide-note">Arcade: blobfish swims forward by itself. Press SPACE, tap the sea, or use JUMP to clear reefs and urchins. Dodge floating jellyfish. Collect stars and beat your best distance.</p><p class="guide-note">A shield blocks one hit. A magnet pulls stars closer. Bosses glow before attacking.</p><div class="buttons"><button id="guideBack">Back</button></div></div></section>
     <section class="overlay" id="stageClear" hidden><div class="card"><div class="eyebrow">a letter found</div><h2 id="clearTitle">W!</h2><p id="clearText"></p><div class="buttons"><button id="nextStage">Next tide →</button><button id="clearHome" class="secondary">Home</button></div></div></section>
     <section class="overlay" id="ending" hidden><div class="card victory"><div class="confetti" aria-hidden="true"><i style="--n:1;--c:#ffd3a1"></i><i style="--n:2;--c:#aee9d5"></i><i style="--n:3;--c:#f8aebb"></i><i style="--n:4;--c:#d8c6ef"></i><i style="--n:5;--c:#ffe4a7"></i><i style="--n:6;--c:#aee9d5"></i><i style="--n:7;--c:#f8aebb"></i><i style="--n:8;--c:#d8c6ef"></i><i style="--n:9;--c:#ffe4a7"></i></div><div class="eyebrow">adventure complete</div><h2>CONGRATULATIONS!</h2><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg><h2>W E O W !</h2><div class="victory-stats"><span>✦ <span id="finalStars">0</span> STARS</span><span>4 / 4 LETTERS</span><span id="secretBadge" hidden>SECRET FOUND</span></div><div class="buttons"><button id="playAgain">Play again</button><button id="endingHome" class="secondary">Home</button></div></div></section>
+    <section class="overlay" id="arcadeOver" hidden><div class="card victory"><div class="eyebrow">the tide got you</div><h2>WEOW! GREAT RUN!</h2><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg><div class="victory-stats"><span><span id="arcadeDistance">0</span> M</span><span>✦ <span id="arcadeStars">0</span> STARS</span><span>BEST <span id="arcadeBest">0</span> M</span></div><div class="buttons"><button id="arcadeAgain">Try again</button><button id="arcadeHome" class="secondary">Home</button></div></div></section>
     <section id="rotatePrompt" hidden aria-label="Landscape orientation needed"><div class="phone-icon" aria-hidden="true">▯</div><h2>A LITTLE TURN</h2><p>Turn your phone sideways.<br>Your ocean adventure plays in landscape.</p></section>
   </main>
   <script>
@@ -132,7 +138,7 @@
     ctx.imageSmoothingEnabled = false;
     const W = 480, H = 270, FLOOR = 226;
     const $ = function (id) { return document.getElementById(id); };
-    const overlays = ['menu', 'pause', 'stageClear', 'ending', 'guide'];
+    const overlays = ['menu', 'pause', 'stageClear', 'ending', 'arcadeOver', 'guide'];
     const forms = {
       plain: { name: 'BLOB', color: '#f4a6ad', trim: '#ffe1d0' },
       puff: { name: 'PUFF', color: '#f5b38d', trim: '#ffe0a4' },
@@ -153,7 +159,7 @@
     let particles = [], shots = [], bossShots = [], dialogue = [], dialogueIndex = 0, secretFound = false;
     let notice = '', noticeTime = 0, formWheelOpen = false, soundOn = true, audioCtx = null;
     let starsByStage = [0,0,0,0], ripples = [], trails = [], sceneTime = 0;
-    let homeReturn=null, guideReturn='menu';
+    let homeReturn=null, guideReturn='menu', mode='story', arcade=null, musicStep=0;
 
     function showOverlay(id) { overlays.forEach(function (name) { $(name).hidden = name !== id; }); }
     function tone(frequency, duration, type, volume) {
@@ -163,10 +169,34 @@
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
         osc.type = type || 'sine'; osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-        gain.gain.setValueAtTime(volume || 0.035, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(.001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(volume || 0.035, audioCtx.currentTime + .012);
+        gain.gain.exponentialRampToValueAtTime(.001, audioCtx.currentTime + duration);
         osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + duration);
       } catch (_) {}
+    }
+    function drum(kind) {
+      if(!soundOn)return;
+      try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        const length=kind==='kick'?.13:.075, count=Math.ceil(audioCtx.sampleRate*length);
+        const buffer=audioCtx.createBuffer(1,count,audioCtx.sampleRate), samples=buffer.getChannelData(0);
+        for(let i=0;i<count;i++)samples[i]=(Math.random()*2-1)*Math.pow(1-i/count,kind==='kick'?3:1.5);
+        const source=audioCtx.createBufferSource(), filter=audioCtx.createBiquadFilter(), gain=audioCtx.createGain();
+        source.buffer=buffer;filter.type=kind==='kick'?'lowpass':'highpass';filter.frequency.value=kind==='kick'?180:kind==='snare'?900:4400;
+        gain.gain.value=kind==='kick'?.08:kind==='snare'?.035:.014;
+        source.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);source.start();
+      } catch(_) {}
+    }
+    function musicTick() {
+      const step=musicStep++%32, bar=Math.floor((musicStep-1)/16)%4;
+      const roots=[130.81,110,174.61,196], root=roots[bar];
+      const lead=[0,null,7,null,12,7,4,null,2,null,7,9,7,null,4,null,0,4,7,null,12,null,9,7,4,null,2,null,7,4,2,null][step];
+      if(step%4===0){tone(root,.27,'triangle',.025);drum('kick');}
+      if(step%8===4)drum('snare');
+      if(step%2===0)drum('hat');
+      if(lead!==null)tone(root*4*Math.pow(2,lead/12),mode==='arcade'?.11:.16,mode==='arcade'?'square':'triangle',mode==='arcade'?.011:.014);
+      if(step%8===6)tone(root*2*Math.pow(2,7/12),.23,'sine',.008);
     }
     function melody(notes) { notes.forEach(function (n, i) { setTimeout(function () { tone(n, .18, 'triangle', .026); }, i * 112); }); }
     function say(speaker, text) { dialogue.push({ speaker: speaker, text: text }); }
@@ -207,15 +237,65 @@
       level.enemies.push({type:'jelly',x:gx+110,y:163,w:18,h:20,min:gx+98,max:gx+175,dir:1,phase:1,calm:false});
       if(index>0)level.enemies.push({type:'jelly',x:data.ground[1][0]+34,y:151,w:18,h:20,min:data.ground[1][0]+20,max:data.ground[1][0]+80,dir:-1,phase:3,calm:false});
       starsByStage[index]=0;
-      player = { x: 28, y: 170, w: 15, h: 17, vx: 0, vy: 0, grounded: false, face: 1, form: 'plain', meter: 100, hp: 3, invuln: 0, roll: 0, dash: 0, slash: 0, grapple: 0, grappleX: 0, checkpoint: 28, abilityCooldown: 0, jumpHeld: false, coyote:0, jumpBuffer:0, airJump:true, landing:0, morph:0, platform:null, shield:0, magnet:0, super:0 };
+      player = { x: 28, y: 170, w: 15, h: 17, vx: 0, vy: 0, grounded: false, face: 1, form: 'plain', meter: 100, hp: 3, invuln: 0, roll: 0, dash: 0, slash: 0, grapple: 0, grappleX: 0, checkpoint: 28, abilityCooldown: 0, jumpHeld: false, coyote:0, jumpBuffer:0, airJump:true, landing:0, morph:0, platform:null, shield:0, magnet:0, super:0, mood:'happy', moodTime:60 };
       ripples=[]; trails=[];
       Object.keys(keys).forEach(function(k){keys[k]=false;});Object.keys(touch).forEach(function(k){touch[k]=false;});
       shots = []; bossShots = []; particles = []; camera = 0; formWheelOpen = false; $('formWheel').classList.remove('open');
       state = 'playing'; showOverlay(null); announce(data.title, 145);
       if (intro) { say('LITTLE BLOBFISH', data.intro); openDialogue(); }
     }
-    function startGame() { homeReturn=null; dialogue=[]; secretFound = false; starsByStage=[0,0,0,0]; makeLevel(0, true); tone(392,.08); melody([392,523,659,784]); }
-    function restartStage() { makeLevel(levelIndex, false); }
+    function startGame() { mode='story';$('shell').classList.remove('arcade-mode');homeReturn=null;dialogue=[];secretFound = false; starsByStage=[0,0,0,0]; musicStep=0;makeLevel(0, true); tone(392,.08); melody([392,523,659,784]); }
+    function restartStage() { if(mode==='arcade')startArcade();else makeLevel(levelIndex, false); }
+    function startArcade() {
+      mode='arcade';$('shell').classList.add('arcade-mode');homeReturn=null;level=null;camera=0;musicStep=0;
+      let best=0;try{best=Number(localStorage.getItem('weowArcadeBest'))||0;}catch(_){}
+      arcade={world:0,speed:3.1,nextSpawn:510,obstacles:[],stars:[],distance:0,starsCaught:0,best:best,seed:41317,jumpBuffer:0};
+      player={x:82,y:FLOOR-17,w:15,h:17,vx:0,vy:0,grounded:true,face:1,form:'plain',meter:100,hp:3,invuln:0,roll:0,dash:0,slash:0,grapple:0,landing:0,morph:0,shield:0,magnet:0,super:0,jumpHeld:false,mood:'happy',moodTime:90};
+      particles=[];ripples=[];trails=[];clearInput();state='playing';showOverlay(null);announce('ARCADE TIDE · SPACE / TAP TO JUMP',150);melody([392,523,659,784]);syncUI();
+    }
+    function arcadeRandom(){arcade.seed=(arcade.seed*1664525+1013904223)>>>0;return arcade.seed/4294967296;}
+    function spawnArcade() {
+      while(arcade.nextSpawn<arcade.world+W+120){
+        const pick=arcadeRandom(),type=pick<.42?'reef':pick<.78?'urchin':'jelly';
+        const h=type==='reef'?29+Math.floor(arcadeRandom()*12):type==='urchin'?24:22;
+        const y=type==='jelly'?FLOOR-65-Math.floor(arcadeRandom()*13):FLOOR-h;
+        const x=arcade.nextSpawn;
+        arcade.obstacles.push({x:x,y:y,w:type==='reef'?25:22,h:h,type:type,phase:arcadeRandom()*6});
+        arcade.stars.push({x:x+46,y:type==='jelly'?FLOOR-27:FLOOR-62,got:false});
+        arcade.nextSpawn+=Math.max(164,arcade.speed*47)+Math.floor(arcadeRandom()*56);
+      }
+    }
+    function endArcade() {
+      state='arcadeOver';player.mood='surprised';player.moodTime=120;
+      arcade.best=Math.max(arcade.best,arcade.distance);
+      try{localStorage.setItem('weowArcadeBest',String(arcade.best));}catch(_){}
+      $('arcadeDistance').textContent=String(arcade.distance);$('arcadeStars').textContent=String(arcade.starsCaught);$('arcadeBest').textContent=String(arcade.best);
+      showOverlay('arcadeOver');melody([392,330,262,330]);syncUI();
+    }
+    function updateArcade() {
+      sceneTime++;arcade.world+=arcade.speed;arcade.distance=Math.floor(arcade.world/8);
+      arcade.speed=Math.min(5.5,3.1+arcade.distance/550);
+      spawnArcade();
+      const p=player,jump=keys.Space||touch.jump;
+      if(jump&&!p.jumpHeld)arcade.jumpBuffer=7;
+      if(arcade.jumpBuffer>0)arcade.jumpBuffer--;
+      if(p.grounded&&arcade.jumpBuffer>0){p.vy=-8.3;p.grounded=false;arcade.jumpBuffer=0;p.mood='focused';p.moodTime=24;burst(p.x+7,FLOOR-2,'#c4f1df',8);tone(440,.12,'triangle');}
+      if(!jump&&p.jumpHeld&&p.vy<-3)p.vy*=.68;
+      p.jumpHeld=!!jump;p.vy=Math.min(8,p.vy+.38);p.y+=p.vy;
+      if(p.y>=FLOOR-p.h){if(!p.grounded&&p.vy>2){p.landing=9;ripple(p.x+7,FLOOR,'#d3f7dd',17);}p.y=FLOOR-p.h;p.vy=0;p.grounded=true;}
+      if(p.landing>0)p.landing--;if(p.moodTime>0)p.moodTime--;
+      if(sceneTime%5===0)trails.push({x:p.x+4,y:p.y+10,life:17,color:'#f9c9c7'});
+      if(arcade.obstacles.some(function(o){
+        const sx=o.x-arcade.world,oy=o.y+(o.type==='jelly'?Math.sin(sceneTime*.055+o.phase)*5:0);
+        return overlap({x:p.x+3,y:p.y+3,w:p.w-6,h:p.h-5},{x:sx+3,y:oy+3,w:o.w-6,h:o.h-4});
+      })){endArcade();return;}
+      arcade.stars.forEach(function(star){if(star.got)return;const sx=star.x-arcade.world,sy=star.y+Math.sin(sceneTime*.08+star.x)*3;
+        if(Math.hypot(sx-(p.x+7),sy-(p.y+8))<14){star.got=true;arcade.starsCaught++;p.mood='happy';p.moodTime=48;burst(sx,sy,'#ffe5a6',12);tone(740+arcade.starsCaught%4*95,.12,'triangle',.024);}
+      });
+      arcade.obstacles=arcade.obstacles.filter(function(o){return o.x>arcade.world-50;});
+      arcade.stars=arcade.stars.filter(function(o){return !o.got&&o.x>arcade.world-50;});
+      updateParticles();if(noticeTime>0)noticeTime--;
+    }
     function setForm(form) {
       if (!forms[form] || !level) return;
       player.form = form; player.roll = 0; player.dash = 0; player.slash = 0;
@@ -234,6 +314,7 @@
     }
     function pickup(item) {
       item.got = true;
+      player.mood='happy';player.moodTime=55;
       if (item.type === 'heart') { player.hp = Math.min(3, player.hp + 1); announce('A LITTLE HEART ♡', 80); tone(660, .12, 'sine'); }
       else if (item.type === 'energy') { player.meter = 100; announce('POWER REFILLED ✦', 80); tone(740, .13, 'triangle'); }
       else { player[item.type] = item.type==='shield'?720:item.type==='magnet'?720:360; if(item.type==='super')player.meter=100; announce({shield:'BUBBLE SHIELD · BLOCKS ONE HIT',magnet:'STAR MAGNET · 12 SECONDS',super:'STAR POWER · FREE ABILITIES FOR 6s'}[item.type],150); melody([523,784,1046]); }
@@ -244,6 +325,7 @@
       if (player.invuln > 0 || state !== 'playing') return;
       if (player.shield>0) { player.shield=0;player.invuln=50; ripple(player.x+7,player.y+8,'#c4f7ff',25); tone(880,.1); return; }
       player.hp -= amount; player.invuln = 65; player.vy = -3.6; player.vx = -player.face * 2;
+      player.mood='angry';player.moodTime=55;
       burst(player.x + 7, player.y + 8, '#ffd7c5', 11); tone(172, .22, 'sawtooth', .025);
       if (player.hp <= 0) { respawn(); player.hp=3; announce('THE SEA GIVES YOU ANOTHER CHANCE ♡', 125); }
     }
@@ -261,6 +343,7 @@
       else if(player.form==='plain') setForm('glow');
       if(player.meter<7 && player.super<=0) { announce('POWER RECHARGING…',45);return; }
       if(player.super<=0)player.meter = Math.max(0, player.meter - 7); player.abilityCooldown = player.super>0?12:20;
+      player.mood='angry';player.moodTime=27;
       const cx = player.x + 7, cy = player.y + 8;
       if (player.form === 'puff') { player.roll = 31; player.vx = player.face * 3.6; tone(190, .18, 'triangle'); burst(cx, cy, '#ffe4b2', 7); }
       if (player.form === 'kelp') {
@@ -319,7 +402,7 @@
       });
     }
     function updatePlayer() {
-      ['invuln','abilityCooldown','roll','dash','slash','grapple','landing','morph','shield','magnet','super'].forEach(function(k){if(player[k]>0)player[k]--;});
+      ['invuln','abilityCooldown','roll','dash','slash','grapple','landing','morph','shield','magnet','super','moodTime'].forEach(function(k){if(player[k]>0)player[k]--;});
       player.meter=Math.min(100,player.meter+(player.form==='plain'?.4:.12));
       const left=keys.ArrowLeft||keys.KeyA||touch.left, right=keys.ArrowRight||keys.KeyD||touch.right;
       const jump=keys.Space||touch.jump;
@@ -333,6 +416,7 @@
       if(player.jumpBuffer>0 && (player.coyote>0||canAirJump)) {
         const airborne=player.coyote===0;
         player.vy=player.form==='fin'?-8.1:-7.1;player.grounded=false;player.platform=null;
+        player.mood='focused';player.moodTime=30;
         player.coyote=0;player.jumpBuffer=0;if(airborne)player.airJump=false;
         ripple(player.x+7,player.y+17,'#cef4e3',airborne?22:12);
         tone(airborne?680:430,.1,'triangle');burst(player.x+7,player.y+16,'#d9e8dd',6);
@@ -373,7 +457,7 @@
         if(star.got)return;
         const dx=player.x+7-star.x,dy=player.y+8-star.y,dist=Math.hypot(dx,dy);
         if(player.magnet>0&&dist<90){star.x+=dx*.12;star.y+=dy*.12;}
-        if(dist<15){star.got=true;starsByStage[levelIndex]++;burst(star.x,star.y,'#ffe9a6',10);ripple(star.x,star.y,'#ffe9a6',15);tone(740+starsByStage[levelIndex]%5*95,.09,'triangle',.025);}
+        if(dist<15){star.got=true;starsByStage[levelIndex]++;player.mood='happy';player.moodTime=45;burst(star.x,star.y,'#ffe9a6',10);ripple(star.x,star.y,'#ffe9a6',15);tone(740+starsByStage[levelIndex]%5*95,.09,'triangle',.025);}
       });
       level.enemies.forEach(function(e){
         if(e.calm||!overlap(player,e))return;
@@ -428,17 +512,15 @@
     }
     function update() {
       frame++;
-      if (state === 'playing') { updateWorld(); updatePlayer(); if(state==='playing'){updateBoss(); updateShots();} updateParticles(); if (noticeTime > 0) noticeTime--; camera += (Math.max(0,Math.min(level.width-W,player.x-145))-camera)*.12; }
+      if (state === 'playing' && mode==='arcade') {updateArcade();camera=arcade.world;}
+      else if (state === 'playing') { updateWorld(); updatePlayer(); if(state==='playing'){updateBoss(); updateShots();} updateParticles(); if (noticeTime > 0) noticeTime--; camera += (Math.max(0,Math.min(level.width-W,player.x-145))-camera)*.12; }
       else if (state === 'menu') updateParticles();
-      if (state === 'playing' && frame % 27 === 0) {
-        const tune = [261.6,329.6,392,329.6,293.7,349.2,440,349.2,261.6,329.6,392,523.3,440,392,329.6,293.7];
-        tone(tune[Math.floor(frame/27)%tune.length], .21, 'triangle', .008);
-      }
+      if (state === 'playing' && frame % (mode==='arcade'?7:9) === 0)musicTick();
     }
     function rect(x,y,w,h,color) { ctx.fillStyle=color; ctx.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h)); }
     function textAt(s,x,y,color,size,align) { ctx.font='bold '+(size||9)+'px monospace'; ctx.textAlign=align||'left'; ctx.textBaseline='top'; ctx.fillStyle='#09213b'; ctx.fillText(s,x+1,y+1); ctx.fillStyle=color||'#fff1d3'; ctx.fillText(s,x,y); }
     function drawBackground() {
-      const colors=level?level.data.palette:stageData[0].palette, drift=level?camera:frame*.12;
+      const colors=mode==='arcade'&&arcade?['#175d78','#418b96','#173b58']:level?level.data.palette:stageData[0].palette, drift=mode==='arcade'&&arcade?arcade.world:level?camera:frame*.12;
       const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,colors[0]);g.addColorStop(.55,colors[1]);g.addColorStop(1,colors[2]);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
       // Broad shafts of light move independently of the camera.
       for(let i=0;i<6;i++) {
@@ -661,9 +743,23 @@
       const form=forms[p.form], body=form.color;
       rect(2,5,11,10,body);rect(4,2,7,3,body);rect(0,8,15,5,body);rect(-3,9,4,4,form.trim);
       rect(2,15,11,2,'#b9788c');rect(4,3,7,2,form.trim);rect(11,6,3,5,form.trim);
-      rect(9,7,2,3,'#1f3349');rect(10,7,1,1,'#fff8e5');rect(12,11,2,2,'#8b566d');rect(5,11,3,2,'#e58e9c');
-      rect(-4,9+Math.sin(sceneTime*.35)*2,4,3,form.trim);
-      if(sceneTime%180>173){rect(9,7,2,3,body);rect(9,8,2,1,'#1f3349');}
+      const nearbyArcade=mode==='arcade'&&arcade&&arcade.obstacles.some(function(o){const dx=o.x-arcade.world-p.x;return dx>0&&dx<95;});
+      const mood=p.moodTime>0?p.mood:nearbyArcade||!p.grounded||Math.abs(p.vx)>1.2?'focused':'calm';
+      const blink=frame%196>190;
+      if(mood==='angry'){
+        rect(8,5,4,1,'#703c59');rect(9,6,3,1,'#703c59');rect(9,8,2,2,'#1f3349');rect(12,12,3,1,'#703c59');rect(12,13,2,1,'#fff2db');
+      }else if(mood==='focused'){
+        rect(8,5,4,1,'#6c5570');rect(9,7,3,2,'#26394e');rect(10,7,1,1,'#fff8e5');rect(12,12,2,1,'#8b566d');
+      }else if(mood==='surprised'){
+        rect(8,5,3,1,'#754b67');rect(9,7,2,3,'#26394e');rect(10,7,1,1,'#fff8e5');rect(12,11,3,3,'#8b566d');rect(13,12,1,1,'#fff2db');
+      }else if(mood==='happy'){
+        rect(8,7,2,1,'#26394e');rect(10,8,2,1,'#26394e');rect(12,11,3,2,'#8b566d');rect(13,13,1,1,'#fff2db');
+      }else{
+        rect(9,blink?9:7,2,blink?1:3,'#26394e');if(!blink)rect(10,7,1,1,'#fff8e5');rect(12,12,2,1,'#8b566d');
+      }
+      rect(5,11,3,2,mood==='angry'?'#d97e95':'#e58e9c');
+      rect(-4,9+Math.round(Math.sin(sceneTime*(mode==='arcade'?.55:.35))*2),4,3,form.trim);
+      if(mood==='angry'||mood==='focused')rect(3,3,3,1,'#fff0d7');
       if(p.form==='puff') { for(let i=0;i<4;i++)rect(2+i*3,0+(i%2),2,3,'#ffe2a8');rect(1,6,2,2,'#ffe2a8');rect(12,3,2,2,'#ffe2a8'); }
       if(p.form==='kelp') { rect(5,-3,3,6,'#4e9b77');rect(8,-6,3,7,'#7fca91');rect(1,14,5,2,'#4e9b77'); }
       if(p.form==='glow') { rect(5,-4,3,7,'#ffeda8');rect(4,-5,5,2,'#fffbd1');rect(2,4,2,2,'#fff3b5'); }
@@ -690,7 +786,45 @@
       if(player.x<188 && frame<300) { rect(10,205,155,16,'#102841bd');textAt('Z FORMS   X ACT   SPACE JUMP',16,210,'#e6f5d8',8); }
       if(level.data.fish && Math.abs(player.x-level.data.fish)<42 && !secretFound) { rect(175,184,130,17,'#1d334acb');textAt('C: LISTEN TO THE FISH',240,189,'#f8e8c4',8,'center'); }
     }
+    function drawArcade() {
+      drawBackground();
+      rect(0,FLOOR,W,H-FLOOR,'#1c4556');rect(0,FLOOR,W,4,'#a5d6bd');
+      for(let i=-1;i<11;i++){
+        const x=i*52-(arcade.world%52);
+        rect(x,FLOOR+7,35,3,'#2c5a67');rect(x+8,FLOOR+22,19,3,'#315d69');
+        drawSeaweed(x+40,FLOOR+4,.75,'#5da78f');
+        if(i%3===0)drawCoral(x+13,FLOOR+3,'#d78e9c');
+      }
+      arcade.stars.forEach(function(s){if(!s.got)drawStar(s.x-arcade.world,s.y+Math.sin(sceneTime*.08+s.x)*3,6,'#ffe2a4',true);});
+      arcade.obstacles.forEach(function(o){
+        const x=Math.round(o.x-arcade.world),y=Math.round(o.y+(o.type==='jelly'?Math.sin(sceneTime*.055+o.phase)*5:0));
+        if(x<-35||x>W+35)return;
+        if(o.type==='reef'){
+          rect(x+2,y+9,o.w-4,o.h-9,'#755b7d');rect(x+6,y+3,o.w-12,8,'#a4738f');rect(x+10,y-2,o.w-20,8,'#d898a6');
+          rect(x+6,y+12,4,4,'#ffc7ab');rect(x+15,y+16,4,3,'#e9a0b2');
+        }else if(o.type==='urchin'){
+          ctx.save();ctx.translate(x+11,y+12);ctx.rotate(sceneTime*.035+o.phase);
+          for(let i=0;i<8;i++){ctx.rotate(Math.PI/4);rect(-2,-14,4,7,'#754969');rect(-1,-16,2,4,'#d79db9');}
+          rect(-9,-9,18,18,'#925c84');rect(-5,-4,2,2,'#fff2ce');rect(4,-4,2,2,'#fff2ce');ctx.restore();
+        }else{
+          const glow=ctx.createRadialGradient(x+11,y+9,2,x+11,y+9,24);glow.addColorStop(0,'#f6c4ff70');glow.addColorStop(1,'#f6c4ff00');ctx.fillStyle=glow;ctx.fillRect(x-13,y-15,48,48);
+          rect(x+4,y+2,14,12,'#d2a9e5');rect(x+7,y-2,8,5,'#e8c7ee');rect(x+2,y+13,3,10,'#b887d2');rect(x+9,y+13,3,11,'#b887d2');rect(x+17,y+13,3,9,'#b887d2');
+          rect(x+7,y+7,2,2,'#263b55');rect(x+14,y+7,2,2,'#263b55');
+        }
+      });
+      trails.forEach(function(t){ctx.globalAlpha=t.life/25;rect(t.x-3,t.y,6,4,t.color);});ctx.globalAlpha=1;
+      particles.forEach(function(p){ctx.globalAlpha=Math.min(1,p.life/12);rect(p.x,p.y,p.size,p.size,p.color);});ctx.globalAlpha=1;
+      ripples.forEach(function(r){ctx.globalAlpha=r.life/35;ctx.strokeStyle=r.color;ctx.lineWidth=1;ctx.beginPath();ctx.arc(r.x,r.y,(1-r.life/24)*r.size+2,0,Math.PI*2);ctx.stroke();});ctx.globalAlpha=1;
+      drawPlayer();drawForeground();
+      rect(0,0,W,35,'#0a1d33dc');rect(0,33,W,2,'#9fbdba');
+      textAt('ARCADE TIDE',10,6,'#ffdad0',10);textAt('SPACE / TAP TO JUMP',10,20,'#bce3d6',7);
+      textAt(arcade.distance+' M',275,7,'#fff0bd',11);textAt('BEST '+Math.max(arcade.best,arcade.distance),275,21,'#c4e7dd',7);
+      drawStar(402,15,6,'#ffe2a4',false);textAt(String(arcade.starsCaught),416,10,'#fff0ba',10);
+      textAt(soundOn?'♪':'×',461,9,'#fff0ce',13,'center');
+      if(noticeTime>0){rect(125,45,230,17,'#102841df');textAt(notice,240,49,'#fff0c5',8,'center');}
+    }
     function draw() {
+      if(mode==='arcade'&&arcade&&state!=='menu'){drawArcade();return;}
       drawBackground();
       if(level) {
         ctx.save();ctx.translate(-Math.round(camera),0);drawGround();
@@ -748,10 +882,12 @@
       $('continue').hidden=!homeReturn;
       $('gameNav').hidden=!['playing','wheel'].includes(state);
       $('mobile').hidden=!(mq.matches&&state==='playing');
+      $('restart').textContent=mode==='arcade'?'Restart run':'Restart stage';
       $('soundMenu').textContent=soundOn?'Sound: on':'Sound: off';
       $('soundPause').textContent=soundOn?'Sound: on':'Sound: off';
     }
     $('start').addEventListener('click',startGame);
+    $('arcadeStart').addEventListener('click',startArcade);
     $('continue').addEventListener('click',continueGame);
     $('controlsMenu').addEventListener('click',openGuide);
     $('controlsPause').addEventListener('click',openGuide);
@@ -766,6 +902,8 @@
     $('restart').addEventListener('click',restartStage);
     $('nextStage').addEventListener('click',function(){makeLevel(levelIndex+1,true);});
     $('playAgain').addEventListener('click',startGame);
+    $('arcadeAgain').addEventListener('click',startArcade);
+    $('arcadeHome').addEventListener('click',goHome);
     $('dialog').addEventListener('click',nextDialogue);
     document.querySelectorAll('[data-form]').forEach(function(button){button.addEventListener('click',function(){setForm(button.dataset.form);});});
     document.querySelectorAll('[data-hold]').forEach(function(button){
@@ -779,8 +917,11 @@
     canvas.addEventListener('pointerdown',function(e){
       const bounds=canvas.getBoundingClientRect(), x=(e.clientX-bounds.left)*W/bounds.width, y=(e.clientY-bounds.top)*H/bounds.height;
       if(x>440&&y<37) {toggleSound();return;}
+      if(mode==='arcade'&&state==='playing'){touch.jump=true;arcade.jumpBuffer=7;return;}
       if(state==='playing' && level.data.fish && Math.abs(player.x-level.data.fish)<45) talkToFish();
     });
+    canvas.addEventListener('pointerup',function(){if(mode==='arcade')touch.jump=false;});
+    canvas.addEventListener('pointercancel',function(){if(mode==='arcade')touch.jump=false;});
     window.addEventListener('keydown',function(e){
       if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
       if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space'].includes(e.code))e.preventDefault();
@@ -795,8 +936,9 @@
         return;
       }
       if(e.code==='KeyM'&&!e.repeat){toggleSound();return;}
+      if(state==='arcadeOver'&&['Space','Enter'].includes(e.code)&&!e.repeat){startArcade();return;}
       if(e.code==='Escape'&&!e.repeat){if(state==='guide')closeGuide();else pauseGame();return;}
-      if(state==='playing'&&!e.repeat){
+      if(state==='playing'&&mode==='story'&&!e.repeat){
         if(e.code==='KeyZ')toggleWheel();
         else if(e.code==='Digit1')setForm('puff');
         else if(e.code==='Digit2')setForm('kelp');

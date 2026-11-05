@@ -55,8 +55,13 @@
     label { display: block; color: #bce6db; text-align: left; font-size: 12px; font-weight: 800; margin: 12px auto; max-width: 440px; }
     input, textarea { display: block; width: 100%; margin-top: 6px; padding: 9px; border: 2px solid #81b7ba; border-radius: 0; background: #0c1c31; color: #fff1d3; font: inherit; font-size: 13px; }
     textarea { min-height: 76px; resize: vertical; }
-    .postcard { margin: 14px auto; max-width: 500px; padding: 18px; border: 2px dashed #d695a4; background: #f6dfbf; color: #513c55; transform: rotate(-1deg); box-shadow: 5px 6px 0 #101d32; }
-    .postcard p { font-size: clamp(14px, 1.8vw, 18px); font-weight: 800; white-space: pre-wrap; }
+    .victory { overflow: hidden; background: linear-gradient(155deg,#193b57,#1e314d 65%,#4a3d64); }
+    .victory h2 { font-size: clamp(24px,4vw,48px); margin-bottom: 4px; }
+    .victory-stats { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 14px auto 4px; }
+    .victory-stats span { display: inline-block; padding: 10px 13px; border: 2px solid #e7cba9; background: #234560; color: #fff1c7; font-size: 13px; font-weight: 900; }
+    .confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .confetti i { position: absolute; top: -16px; left: calc(var(--n) * 10%); width: 7px; height: 12px; background: var(--c); animation: drift-down calc(2s + var(--n) * .18s) linear infinite; animation-delay: calc(var(--n) * -.29s); opacity: .8; }
+    @keyframes drift-down { to { transform: translate(calc((var(--n) - 5) * 7px), 430px) rotate(520deg); } }
     .small { font-size: 11px; color: #bdd5d9; }
     @media (max-width: 680px), (max-height: 420px) { .card { padding: 16px; } .lead { margin: 8px auto; } .form-list { margin: 9px 0; } .help { margin-top: 10px; } .fish-icon { width: 66px; height: 49px; } }
 
@@ -98,7 +103,7 @@
       .guide-note { margin: 8px 0; }
       #dialog { width: min(620px, calc(100% - 180px)); bottom: 9%; }
     }
-    @media (prefers-reduced-motion: reduce) { .fish-icon { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .fish-icon, .confetti i { animation: none; } .confetti { display: none; } }
   </style>
 </head>
 <body>
@@ -116,10 +121,9 @@
     <section class="overlay" id="pause" hidden><div class="card"><div class="eyebrow">the sea can wait</div><h2>PAUSED</h2><div class="buttons"><button id="resume">Keep swimming</button><button id="restart" class="secondary">Restart stage</button><button id="controlsPause" class="secondary">Controls guide</button><button id="pauseHome" class="secondary">Home</button><button id="soundPause" class="secondary">Sound: on</button><button id="fullscreenPause" class="secondary">Fullscreen</button></div></div></section>
     <section class="overlay" id="guide" hidden><div class="card"><div class="eyebrow">a little field guide</div><h2>HOW TO PLAY</h2><table class="controls-table"><thead><tr><th>Action</th><th>Keyboard</th><th>Touch</th></tr></thead><tbody><tr><td>Move</td><td>← → or A / D</td><td>◀ / ▶</td></tr><tr><td>Jump</td><td>SPACE</td><td>JUMP</td></tr><tr><td>Use ability</td><td>Hold X</td><td>Hold ACT</td></tr><tr><td>Choose form</td><td>Z or 1–4</td><td>FORM</td></tr><tr><td>Talk</td><td>C / ENTER</td><td>TALK</td></tr><tr><td>Pause / Home</td><td>ESC / ⌂ button</td><td>Ⅱ / ⌂</td></tr><tr><td>Sound</td><td>M</td><td>♪ or menu</td></tr></tbody></table><p class="guide-note">Hold jump for height. FIN can jump again in midair. Land on crabs or use powers to befriend enemies. Near a shell or vine gate, ACT chooses the right form.</p><p class="guide-note">Stars are optional. A shield blocks one hit. A magnet pulls stars closer. Star power gives free abilities, but you still need to dodge. Bosses glow before attacking.</p><div class="buttons"><button id="guideBack">Back</button></div></div></section>
     <section class="overlay" id="stageClear" hidden><div class="card"><div class="eyebrow">a letter found</div><h2 id="clearTitle">W!</h2><p id="clearText"></p><div class="buttons"><button id="nextStage">Next tide →</button><button id="clearHome" class="secondary">Home</button></div></div></section>
-    <section class="overlay" id="ending" hidden><div class="card"><div class="eyebrow">delivered with love</div><h2>W E O W !</h2><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg><div class="postcard"><small>TO <span id="recipient">YOU</span> ✦ FROM A LITTLE BLOBFISH</small><p id="finalMessage"></p></div><p class="small" id="secretLine"></p><div class="buttons"><button id="playAgain">Play again</button><button id="endingHome" class="secondary">Home</button></div></div></section>
+    <section class="overlay" id="ending" hidden><div class="card victory"><div class="confetti" aria-hidden="true"><i style="--n:1;--c:#ffd3a1"></i><i style="--n:2;--c:#aee9d5"></i><i style="--n:3;--c:#f8aebb"></i><i style="--n:4;--c:#d8c6ef"></i><i style="--n:5;--c:#ffe4a7"></i><i style="--n:6;--c:#aee9d5"></i><i style="--n:7;--c:#f8aebb"></i><i style="--n:8;--c:#d8c6ef"></i><i style="--n:9;--c:#ffe4a7"></i></div><div class="eyebrow">adventure complete</div><h2>CONGRATULATIONS!</h2><svg class="fish-icon" aria-hidden="true"><use href="#blob-icon"></use></svg><h2>W E O W !</h2><div class="victory-stats"><span>✦ <span id="finalStars">0</span> STARS</span><span>4 / 4 LETTERS</span><span id="secretBadge" hidden>SECRET FOUND</span></div><div class="buttons"><button id="playAgain">Play again</button><button id="endingHome" class="secondary">Home</button></div></div></section>
     <section id="rotatePrompt" hidden aria-label="Landscape orientation needed"><div class="phone-icon" aria-hidden="true">▯</div><h2>A LITTLE TURN</h2><p>Turn your phone sideways.<br>Your ocean adventure plays in landscape.</p></section>
   </main>
-  <script id="gift-data" type="application/json">{"name":"you","message":"For the person who makes even farting fish hilarious: you make the world feel softer, brighter, and a whole lot more weow. I'm really glad you're in my life. 🩷"}</script>
   <script>
   (function () {
     'use strict';
@@ -149,7 +153,6 @@
     let particles = [], shots = [], bossShots = [], dialogue = [], dialogueIndex = 0, secretFound = false;
     let notice = '', noticeTime = 0, formWheelOpen = false, soundOn = true, audioCtx = null;
     let starsByStage = [0,0,0,0], ripples = [], trails = [], sceneTime = 0;
-    const gift = JSON.parse($('gift-data').textContent);
     let homeReturn=null, guideReturn='menu';
 
     function showOverlay(id) { overlays.forEach(function (name) { $(name).hidden = name !== id; }); }
@@ -420,7 +423,7 @@
     }
     function completeStage() {
       state = 'clear';
-      if (levelIndex === 3) { $('recipient').textContent = gift.name.toUpperCase(); $('finalMessage').textContent = gift.message; $('secretLine').textContent = secretFound ? 'P.S. The farting fishes said: “pfft pfft.” Translation: “you are loved.”' : 'P.S. Somewhere in the sea, two fish are having a very important conversation.'; $('secretLine').textContent += ' You gathered ' + starsByStage.reduce(function(a,b){return a+b;},0) + ' stars along the way.'; showOverlay('ending'); state='ending'; melody([523,659,784,1046,784,1046]); }
+      if (levelIndex === 3) { $('finalStars').textContent=String(starsByStage.reduce(function(a,b){return a+b;},0)); $('secretBadge').hidden=!secretFound; showOverlay('ending'); state='ending'; melody([523,659,784,1046,784,1046]); }
       else { $('clearTitle').textContent = level.data.letter + ' !'; $('clearText').textContent = 'The sea gave you the letter ' + level.data.letter + '. The word so far: ' + 'WEOW'.slice(0,levelIndex+1).split('').join(' · ') + '. You gathered ' + starsByStage[levelIndex] + '/' + level.stars.length + ' stars. Keep going, little blob.'; showOverlay('stageClear'); melody([523,659,784]); }
     }
     function update() {
